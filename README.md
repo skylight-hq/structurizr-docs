@@ -63,7 +63,7 @@ relationships between elements in the C4 model should be added within the model
 
 When it comes to architecture decision records (ADRs), there should be a
 `decisions/` directory at the root of the `docs/` directory. These ADRs must
-follow the same format as the files created by `adr-tools`. jkkkjjj
+follow the same format as the files created by `adr-tools`.
 
 ### Using views 📁
 
