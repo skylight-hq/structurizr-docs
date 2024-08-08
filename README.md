@@ -1,5 +1,9 @@
 # Structurizr Documentation Template
 
+> [!TIP]
+> This project leverages `just` as a command runner. To learn more about `just`
+> view their documentation at: [https://just.systems/man/en]().
+
 This project is a template for how Skylight projects can use Structurizr for
 documentation within a single repository. Structurizr DSL provides a workspace
 for C4 model data architecture which integrates documentation, decision records,
