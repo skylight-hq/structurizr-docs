@@ -24,4 +24,4 @@ diagrams-mermaid:
   docker run -it --rm -v {{ invocation_directory_native() }}:/usr/local/structurizr structurizr/cli export -workspace workspace.json -format mermaid -output diagrams
 
 # Working with Architectural Decision Records
-mod adr './decisions'
+mod adr './docs/decisions'

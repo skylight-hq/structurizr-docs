@@ -18,7 +18,7 @@ new title:
 
   let fullWritePath;
   const runningFromDir = path.join("{{justfile_directory()}}");
-  const folderPath = 'decisions';
+  const folderPath = 'docs/decisions';
 
   if (runningFromDir.endsWith(folderPath)) {
     fullWritePath = runningFromDir;
