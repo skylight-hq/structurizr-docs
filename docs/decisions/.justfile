@@ -4,89 +4,89 @@ node_shebang := if os_family() == "windows" { " node" } else { "/usr/bin/env nod
 
 [doc('Create a new ADR from a template')]
 new title:
-  #!/usr/bin/env node
-  const fs = require('node:fs');
-  const path = require('node:path');
+    #!{{ node_shebang }}
+    const fs = require('node:fs');
+    const path = require('node:path');
 
-  const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split('T')[0];
 
-  console.info(`Creating a new ADR on ${today}`);
+    console.info(`Creating a new ADR on ${today}`);
 
-  // README: The title appears here from the args passed to just using the
-  // curly braces.
-  const title = "{{title}}"
-                .replace(/[!@#\$%\^&\*\(\)\-\+=\\\|\}\{\[\];:\/\.,<>\s'"]+/ig, '-')
-                .toLowerCase();
+    // README: The title appears here from the args passed to just using the
+    // curly braces.
+    const title = "{{ title }}"
+                  .replace(/[!@#\$%\^&\*\(\)\-\+=\\\|\}\{\[\];:\/\.,<>\s'"]+/ig, '-')
+                  .toLowerCase();
 
-  console.info(`Found ADR title: {{title}}`);
+    console.info(`Found ADR title: {{ title }}`);
 
-  let fullWritePath;
-  const runningFromDir = path.join("{{justfile_directory()}}");
-  const folderPath = 'docs/decisions';
+    let fullWritePath;
+    const runningFromDir = path.join("{{ replace(justfile_directory(), '\', '/') }}");
+    const folderPath = 'docs/decisions';
 
-  if (runningFromDir.endsWith(folderPath)) {
-    fullWritePath = runningFromDir;
-  } else {
-    fullWritePath = path.join(runningFromDir, folderPath);
-  }
+    if (runningFromDir.endsWith(folderPath)) {
+      fullWritePath = runningFromDir;
+    } else {
+      fullWritePath = path.join(runningFromDir, folderPath);
+    }
 
-  const isFile = fileName => {
-    const re = /[0-9]{4}/g;
-    return fs.lstatSync(fileName).isFile() && fileName.match(re);
-  };
+    const isFile = fileName => {
+      const re = /[0-9]{4}/g;
+      return fs.lstatSync(fileName).isFile() && fileName.match(re);
+    };
 
-  console.info(`Checking for existing ADRs in ${fullWritePath}`);
+    console.info(`Checking for existing ADRs in ${fullWritePath}`);
 
-  const files = fs.readdirSync(fullWritePath)
-    .map(fileName => {
-      return path.join(fullWritePath, fileName);
-    })
-    .filter(isFile);
+    const files = fs.readdirSync(fullWritePath)
+      .map(fileName => {
+        return path.join(fullWritePath, fileName);
+      })
+      .filter(isFile);
 
-  console.info(`Found ${files.length} ADR(s)`);
+    console.info(`Found ${files.length} ADR(s)`);
 
-  const nextAdrNumber = files.length + 1;
-  const nextAdrNumberString = (nextAdrNumber + "").padStart(4, '0');
+    const nextAdrNumber = files.length + 1;
+    const nextAdrNumberString = (nextAdrNumber + "").padStart(4, '0');
 
-  console.info(`Setting your new ADR to #${nextAdrNumberString}`);
+    console.info(`Setting your new ADR to #${nextAdrNumberString}`);
 
-  const nextAdrFilePath = path.join(fullWritePath, `${nextAdrNumberString}-${title}.md`);
+    const nextAdrFilePath = path.join(fullWritePath, `${nextAdrNumberString}-${title}.md`);
 
-  console.info(`Attempting to save ADR #${nextAdrNumberString} to ${nextAdrFilePath}`);
+    console.info(`Attempting to save ADR #${nextAdrNumberString} to ${nextAdrFilePath}`);
 
-  // README: This is the ADR template now embedded in this Justfile
-  const content = `# ${nextAdrNumber}. {{title}}
+    // README: This is the ADR template now embedded in this Justfile
+    const content = `# ${nextAdrNumber}. {{ title }}
 
-  Date: ${today}
+    Date: ${today}
 
-  ## Status
+    ## Status
 
-  ${today} Proposed
+    Proposed
 
-  ## Context and Problem Statement
+    ## Context and Problem Statement
 
-  Give context and background here around why the decision was necessary
+    Give context and background here around why the decision was necessary
 
-  ## Decision Drivers
+    ## Decision Drivers
 
-  What metrics or factors drove your decision?
+    What metrics or factors drove your decision?
 
-  ## Considered Options
+    ## Considered Options
 
-  What other options were considered, and what pros and cons exist around these decisions?
+    What other options were considered, and what pros and cons exist around these decisions?
 
-  ## Decision Outcome
+    ## Decision Outcome
 
-  What decision did you go forward with, and how does it map to the above decision drivers?
+    What decision did you go forward with, and how does it map to the above decision drivers?
 
-  ## Appendix (OPTIONAL)
+    ## Appendix (OPTIONAL)
 
-  Add any links here that are relevant for understanding your proposal or its background.
-  `
+    Add any links here that are relevant for understanding your proposal or its background.
+    `
 
-  try {
-    fs.writeFileSync(nextAdrFilePath, content);
-    console.log(`Successfully created ADR #${nextAdrNumberString} for {{title}} at ${nextAdrFilePath}`);
-  } catch (e) {
-    console.error(e);
-  }
+    try {
+      fs.writeFileSync(nextAdrFilePath, content);
+      console.log(`Successfully created ADR #${nextAdrNumberString} for {{ title }} at ${nextAdrFilePath}`);
+    } catch (e) {
+      console.error(e);
+    }
