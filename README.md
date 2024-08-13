@@ -2,12 +2,26 @@
 
 > [!TIP]
 > This project leverages `just` as a command runner. To learn more about `just`
-> view their documentation at: [https://just.systems/man/en]().
+> view their documentation at: [https://just.systems/man/en](). Run `just help`
+> for a list of commands.
 
 This project is a template for how Skylight projects can use Structurizr for
 documentation within a single repository. Structurizr DSL provides a workspace
 for C4 model data architecture which integrates documentation, decision records,
 and diagrams in a single resource.
+
+## Getting started
+
+To get started, copy the `docs/` directory along with the `justfile` at the root
+of this repository into any project. If your project leverages a `justfile`
+already, you must incorporate the contents of this project's `justfile` into
+your project's `justfile`. Specifically, the `mod ...` lines at the bottom of
+this repository's `justfile`.
+
+With these files and directories in your project, run `just structurizr start`
+to get Structurizr Lite running in your browser.
+
+## Writing Structurizr DSL
 
 > [!IMPORTANT]
 > If you're new to the [C4 model][docs-c4-model] for system architecture
@@ -16,15 +30,6 @@ and diagrams in a single resource.
 
 [docs-c4-model]: https://c4model.com/#Abstractions "The homepage for the C4 model"
 [docs-structurizr]: https://docs.structurizr.com/ "The homepage for Structurizr"
-
-## Getting started
-
-To get started, you can copy the `docs/` directory into a new project. This
-directory includes the necessary files to use Structurizr Lite in the most
-ergonomic way. The documentation found here is only a starting point and should
-be modified as needed for your project's documentation.
-
-## Writing Structurizr DSL
 
 Structurizr DSL is based on the C4 model. A Structurizr workspace contains a
 `model {}` and a `views {}` block. When writing in the DSL it helps to think of
@@ -59,15 +64,30 @@ Name
 │  │        └── README.md
 ```
 
+For more information on Documentation and how it renders in Structurizr, read
+the following pages of documentation.
+
+- [https://docs.structurizr.com/dsl/docs]()
+- [https://docs.structurizr.com/ui/documentation/headings]()
+
+##### Relationships between models
+
 Due to the nature of how the models and views are separated into separate files,
-relationships between elements in the C4 model should be added within the model
-`.dsl` files and not in the main `workspace.dsl` file.
+Relationships between elements in the C4 model should be added within the model
+`.dsl` files and not in the main `workspace.dsl` file. In other words,
+Relationships should always be made implicitly rather than explicitly. For more
+information, [read the DSL documentation on Relationships][s9r-relationship].
+
+[s9r-relationship]: https://docs.structurizr.com/dsl/language#relationship
 
 #### Decision records
 
 When it comes to architecture decision records (ADRs), there should be a
 `decisions/` directory at the root of the `docs/` directory. These ADRs must
-follow the same format as the files created by `adr-tools`.
+follow the same format as the files created by `adr-tools`. The `justfile` in
+this project already contains a module called `adr` where you can run `just adr
+new "A title for the ADR"` to create sequential ADRs automatically. This command
+works in both Unix and Windows environments that have Node installed.
 
 ### Using views 📁
 
