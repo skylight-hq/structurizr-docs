@@ -1,4 +1,4 @@
-# vi:set ft=make
+set windows-shell := ['powershell.exe', '-NoLogo', '-Command']
 
 # README: This file is used for automating tasks. Read more about `just` on
 # their [documentaton site](https://just.systems/man/en/).
