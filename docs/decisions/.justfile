@@ -1,5 +1,11 @@
 set windows-shell := ['powershell.exe', '-NoLogo', '-Command']
 
+alias help := default
+
+[private]
+@default:
+    just -l
+
 node_shebang := if os_family() == "windows" { " node" } else { "/usr/bin/env node" }
 
 [doc('Create a new ADR from a template')]
