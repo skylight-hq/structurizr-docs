@@ -11,7 +11,7 @@ alias help := default
 # @description A string representing the singular name to use when outputting
 # messages from the main _new recipe defined at the root `justfile`.
 
-type := "decision record"
+type := "run book"
 
 # @variable folder
 # @type string
@@ -19,8 +19,8 @@ type := "decision record"
 # repository which contains the .template.md and where the files are being
 # created.
 
-folder := "docs/decisions"
+folder := "docs/runbooks"
 
-[doc('Create a new decision from the template found in docs/decisions/.template')]
+[doc('Create a new decision from the template found in docs/runbooks/.template')]
 @new title:
     just --justfile {{ justfile() }} _new "{{ title }}" "{{ type }}" "{{ folder }}"

@@ -1,0 +1,46 @@
+## ${title}
+
+Describe your guide's overview here. You don't need to add an Overview heading
+since it renders redundantly in GitHub and Structurizr.
+
+### Step 1
+
+Steps are useful if your guide is meant to be a step-by-step guide. If your
+guide is more informational, you probably don't need any steps.
+
+#### Sub-Step 1.a
+
+Sub-steps should be a level 4 heading to split up the page.
+
+### Step 2
+
+1. step
+1. step
+1. step
+
+- item
+- item
+- item
+
+### Admonitions
+
+These are useful to put inside of a paragraph to break up the content. When
+you're editing your guide, leverage admonitions to better communicate specific
+information to the reader.
+
+> 💡 **Tip**
+>
+> These are useful when you have a helpful tip to share and want to call-out.
+
+> ℹ️ **Info**
+>
+> These are useful when you want to call-out information.
+
+> ⚠️ **Warning**
+>
+> These are useful when you want to call-out a warning or cautionary message.
+
+> 📝 **Note**
+>
+> These are useful when you want to call attention but the other admonitions
+> don't make sense.

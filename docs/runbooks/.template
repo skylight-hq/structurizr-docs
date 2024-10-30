@@ -1,0 +1,23 @@
+## {{ title }}
+
+Date: ${today}
+
+### Service details
+
+What service or application is this run book discussing?
+
+### Confirm the problem
+
+Steps to reproduce and confirm the problem.
+
+### Resolution options
+
+Steps to resolve the problem.
+
+### Notes
+
+Include any additional notes in this section.
+
+### Other run books to reference
+
+Include links to other sections of the \`runbooks/\` directory, if necessary.
