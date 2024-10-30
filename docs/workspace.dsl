@@ -5,6 +5,8 @@ workspace {
     # identifiers.
     !identifiers hierarchical
 
+    !adrs "./decisions"
+
     model {
         properties {
             # README: https://docs.structurizr.com/dsl/cookbook/groups/#nested-groups
@@ -12,6 +14,22 @@ workspace {
         }
 
         !include "./models/default.dsl"
+
+        # README: This software system exists only to give the Documentation section of
+        # Structurizr a title for the scope of this documentation. More
+        # infromation about why this is necessary can be found here:
+        # https://docs.structurizr.com/ui/documentation/headings
+        softwareSystem "Guides" {
+            !docs "./guides"
+        }
+
+        # README: This software system exists only to give the Documentation section of
+        # Structurizr a title for the scope of this documentation. More
+        # infromation about why this is necessary can be found here:
+        # https://docs.structurizr.com/ui/documentation/headings
+        softwareSystem "Run books" {
+            !docs "./runbooks"
+        }
     }
 
     views {
